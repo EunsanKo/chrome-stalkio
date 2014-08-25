@@ -5,7 +5,7 @@
 /**
  * Global variable containing the query we'd like to pass to Flickr. In this
  * case, kittens!
- 
+
 
 /**
  * Copyright (c) 2013 JeongHoon Byun aka "Outsider", <http://blog.outsider.ne.kr/>
@@ -15,10 +15,11 @@
 (function() {
   'use strict';
 
-  
+
 
   var _S_BK = {
       loadScript :  function(url, callback){
+
         var script = document.createElement("script");
         script.type = "text/javascript";
         if (script.readyState){  //IE
@@ -35,41 +36,45 @@
           };
         }
         script.src = url;
+
         document.getElementsByTagName("head")[0].appendChild(script);
       }
     }
 
 
-    
+
 
 
   var stalkio = function(){
     console.log(location);
     if(location.protocol=='http:'){
-      _S_BK.loadScript('http://www.stalk.io/stalk.js', function(){
-      
+      var url = chrome.extension.getURL("stalk.js");
+      //var url = 'http://www.stalk.io/stalk.js'
+
+      _S_BK.loadScript(url, function(){
+
         var s = document.createElement('script');
           //s.innterHTML = 'alert(STALK.init())';
-        s.innerHTML = 'eval("if(!STALK.init()) STALK.init();")';
-          
-        document.getElementsByTagName("head")[0].appendChild(s);  
+        s.innerHTML = 'eval("STALK.init();")';
+
+        document.getElementsByTagName("head")[0].appendChild(s);
       });
     }else{
       console.log("Only http protocol");
     }
-    
 
-    
+
+
 
   };
 
-  
-  
+
+
   stalkio();
-  
-  
-  
-  
+
+
+
+
   //console.log(STALK);
   //STALK.init();
 
@@ -87,9 +92,8 @@
 $(document).ready(function(){
   $(document).keypress(function(e){
     if(e.keyCode==13) alert('enter');
-    
+
   });
 
-  
-});
 
+});

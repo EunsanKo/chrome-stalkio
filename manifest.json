@@ -1,18 +1,18 @@
 {
-  "name": "NamuAmi",
+  "name": "stalk.io",
   "version": "0.2.0",
   "manifest_version": 2,
   "description": "",
   "icons": {
-    "16": "images/icon_016.png",
-    "128": "images/icon_128.png"
+    "16": "images/stalk_16.png",
+    "128": "images/stalk_128.png"
   },
   "content_scripts": [
     {
       "matches": [ "http://*/*", "https://*/*"],
       "js": [
         "jquery.min.js",
-        
+        "stalk.js",
         "main.js"
 
       ],
@@ -21,6 +21,7 @@
     }
   ],
 
+  "web_accessible_resources" : ["stalk.js"],
 
   "permissions": [
    "http://chat.stalk.io:8000/node/stalk-io", "https://*/*"
